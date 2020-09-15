@@ -1,17 +1,14 @@
 dist: bionic
-
 language: ruby
 rvm:
 - 2.5.0
 env:
   global:
-    secure: c9+sQhYhqZI1hDJLYSXw0MuXsc+AhRIg5UxOOifQN1Bm1n180EDnpyL1ms9R1XUF+mMivh/nrxNNVGg4Z+G9mWoUcZBsx+AYvmZjC+6KYJ9hHkloDF7pZQ9IjQyz9YS0tzD/d3PalxZUGKI4ViRtkEMhiEm3LpzN49Jy9Vm/Q2LqaOUhTN+mMwSorRURdFl9qc0XnYFVQ7WnhcdxudI5Oc11GvLUyDMYP36CL9Bs/CbQEyFZyhSTt21mYb1B3oYu1QUqTSRpeugArJHo7O6SYp8n74vxBa+YflHRHhRV+FXmTIbA38O0Tk744l0QB22GvzKqx34/jQd9F4MHbEYjSb3J8L19VTkcgr9+C0p5sineoEjUbVKMsUytITcQ7S3qL9Wu3YRCIPPN9tfDTMNTaUapLbKSJ0n5RCyN9IOVpMZpL8AiF3Uy9A5m/R8hHd/bJ8GVNlEwfLq/ILpvXg4DEwN/reT+9iUPu6vEItZjS7keaImq5EPnAh0hLp3NmFgOgDq9LM1lC9OdZlxK74pAuEnVUMEqOCThzbIkX58zudGsoT4pdfXM551jrhDw6mYTXQKTi5IbmUbyjbMe/m7o01uP06tZvfFFUK0qljKqOY16MgyRIx/UCNRd8vt0HG8fki0l9HVTP1bLduJB2sMAsIiNw8P10D9AsgLbmU63fgc=
-
+    secure: FP9w+nbKTKOPIILFQOcvE7mxiLyfOhcieInU2AJLo9dYFSHTlCl7yu8Uw2yHfOPi2QNSIDX2VKcKxPFOu+oH4INTQmh0oyWRVQD+hTjNA3ioHsNZpndwPIAyk+of63uqYuzGsFv0qB7e/YEn2qowkVZebSzGl829/HVeopglUb4B9Y3w4FT+x4/a/e3O38/D4UG8oeF0sxjcBYhtwUAnd2wbzWffzMKBeiLS9V+DlhcVL1bXBJS186oj4c92wejwDOgGtBHaKT8UwUq+h9EimLkaMpltF2c+CuP5EATtg9rjJKd/kcUvv+ftlRWEFy7djfnmjp1NEollY8EW7d/HnjQ80TtNhHTPnj82TmhVuWrmFs6FrwUxTwHu+j9+J6ocJrnS63eyLCl0DfRuT45ZzEXS5CYi/iFZf2dr4BUh8qXeixQYc46h6+9WE2O/CtAsuqYfK6l4QTUHJ9rlPHpTPURYLv9/Wl2CJDf5nvAEXNFEMTyPAK9xGjWccd7DQNnTqIolSHD4IQz4WZjeGfNMVyLjoHdOfB8uKG9Iwf1XJD2qztqyBcHZkWjesVjBgpN1PrrfZ/MJHflzV6cOCxB7pvPrjoG/o+aSPrt+Cm9YRBWGW1jtomuy6B6PNqK+uPOdQapq6gelnr7GMHSuz9EYF/MKyoaXyBKsukYe0BV18B8=
 after_success:
-  - openssl enc -d -aes-256-cbc -in -k $DEPLOY_KEY -in config/id_deploy_enc_travis -out -config/id_deploy
+- "openssl aes-256-cbc -k $DEPLOY_KEY1 -in config/id_deploy_enc_travis -d -a -out config/id_deploy"
 
-  - |
-    if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
-      bundle exec cap staging deploy
-    fi
-
+- |
+  if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
+    bundle exec cap staging deploy
+  fi
