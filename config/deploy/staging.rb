@@ -11,7 +11,7 @@ set :sudo_user, "wcmc"
 set :app_port, "80"
 
 
-set :ssh_options, keys: ["config/id_deploy"] if File.exist?("config/id_deploy")
+set :ssh_options, keys: ["/tmp/deploy_key"] if File.exist?("/tmp/deploy_key")
 
 
 
