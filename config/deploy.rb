@@ -4,7 +4,7 @@ lock "~> 3.11.2"
 
 set :application, 'ci-test'
 
-set :repo_url, 'git@github.com:unepwcmc/ci-test.git'
+set :repo_url, 'https://github.com/unepwcmc/ci-test.git'
 
 
 set :deploy_user, 'wcmc'
