@@ -3,7 +3,11 @@ rvm:
 - 2.5.0
 env:
   global:
-    secure: Yn/qWSJ3s1x8tVM00t/KxGH+lSxMQzMJAAEsosdSydOn4+1wZKY8rLSyq6wYhma6FvxrjtAqBlE17fqZGRqBsJpW3E7wDf8lcnz1UYAbKqH1YmJFnOdDjZNCoROhqwDSNAN6JPDc0KDL9q610y4pg/zXEOyteY60q2gnVELGiqcUxl4W/6cFWrJNXsLGAtQvuQjg9hnDhUKILeXKOdbGug0zuJQCZhjhG6yCd16jtdeO/2hnRP7WjCymdh4IiLGIQ6GS4A809V4q7D9E7SkuatvpdEE3umIHerAAuX62IbIwfXTVp+5sxwnLSdDfhCt8i9VFm/klClFBCH4UE/EWhScuRJXFWwS70aNDqwEuA4cReFsMS0Z/4hZ/7RbjBaspZaNSnj9mNKeD1YGG6wljef2ubNajKwSPYAE0ExFayP/wkJKU8Nb9odmKouhZPkgu2JyOU/D5lHlRn+wiPSThaiF+yZ+Dcdgje5Q9QM7j+84lJDBhm/9bGaBdP8aRPHHjaZiXidW1NajBhfUP2MBSTtcmq+YwPSK/GqaEZ2F788U/A7rsK+8vXKhRB77o1yxSZjy3A6S3S6IM/FOZLvuUptGWxTzGseJZKKapgkePaTw8kWlv8oWmo18oACjZkmtppAk3DyQGjqk3iOHC2OQ6EBr1uPCxWPKbJgGLpVU+Sqk=
+    secure: c9+sQhYhqZI1hDJLYSXw0MuXsc+AhRIg5UxOOifQN1Bm1n180EDnpyL1ms9R1XUF+mMivh/nrxNNVGg4Z+G9mWoUcZBsx+AYvmZjC+6KYJ9hHkloDF7pZQ9IjQyz9YS0tzD/d3PalxZUGKI4ViRtkEMhiEm3LpzN49Jy9Vm/Q2LqaOUhTN+mMwSorRURdFl9qc0XnYFVQ7WnhcdxudI5Oc11GvLUyDMYP36CL9Bs/CbQEyFZyhSTt21mYb1B3oYu1QUqTSRpeugArJHo7O6SYp8n74vxBa+YflHRHhRV+FXmTIbA38O0Tk744l0QB22GvzKqx34/jQd9F4MHbEYjSb3J8L19VTkcgr9+C0p5sineoEjUbVKMsUytITcQ7S3qL9Wu3YRCIPPN9tfDTMNTaUapLbKSJ0n5RCyN9IOVpMZpL8AiF3Uy9A5m/R8hHd/bJ8GVNlEwfLq/ILpvXg4DEwN/reT+9iUPu6vEItZjS7keaImq5EPnAh0hLp3NmFgOgDq9LM1lC9OdZlxK74pAuEnVUMEqOCThzbIkX58zudGsoT4pdfXM551jrhDw6mYTXQKTi5IbmUbyjbMe/m7o01uP06tZvfFFUK0qljKqOY16MgyRIx/UCNRd8vt0HG8fki0l9HVTP1bLduJB2sMAsIiNw8P10D9AsgLbmU63fgc=
+
 after_success:
-  - "openssl aes-256-cbc -k $DEPLOY_KEY -in config/deploy_id_rsa_enc_travis -d -a -out config/deploy_id_rsa"
-  - "bundle exec cap staging deploy"
+  - |
+    if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
+      bundle exec cap staging deploy
+    fi
+
