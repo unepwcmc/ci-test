@@ -89,3 +89,6 @@ set :passenger_restart_with_touch, false
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+
+set :slack_url, 'https://hooks.slack.com/services/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'
