@@ -10,7 +10,3 @@ before_install:
 - chmod 600 /tmp/deploy_key
 - ssh-add /tmp/deploy_key
 
-
-
-after_success:
-[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap staging deploy
