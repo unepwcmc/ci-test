@@ -91,3 +91,4 @@ set :passenger_restart_with_touch, false
 # set :ssh_options, verify_host_key: :secure
 
 set :slack_url, YAML.load(`rails credentials:show`)['WEBHOOK']
+set :slack_channel, ['#devops']
