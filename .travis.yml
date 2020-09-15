@@ -6,7 +6,7 @@ env:
   global:
     secure: FP9w+nbKTKOPIILFQOcvE7mxiLyfOhcieInU2AJLo9dYFSHTlCl7yu8Uw2yHfOPi2QNSIDX2VKcKxPFOu+oH4INTQmh0oyWRVQD+hTjNA3ioHsNZpndwPIAyk+of63uqYuzGsFv0qB7e/YEn2qowkVZebSzGl829/HVeopglUb4B9Y3w4FT+x4/a/e3O38/D4UG8oeF0sxjcBYhtwUAnd2wbzWffzMKBeiLS9V+DlhcVL1bXBJS186oj4c92wejwDOgGtBHaKT8UwUq+h9EimLkaMpltF2c+CuP5EATtg9rjJKd/kcUvv+ftlRWEFy7djfnmjp1NEollY8EW7d/HnjQ80TtNhHTPnj82TmhVuWrmFs6FrwUxTwHu+j9+J6ocJrnS63eyLCl0DfRuT45ZzEXS5CYi/iFZf2dr4BUh8qXeixQYc46h6+9WE2O/CtAsuqYfK6l4QTUHJ9rlPHpTPURYLv9/Wl2CJDf5nvAEXNFEMTyPAK9xGjWccd7DQNnTqIolSHD4IQz4WZjeGfNMVyLjoHdOfB8uKG9Iwf1XJD2qztqyBcHZkWjesVjBgpN1PrrfZ/MJHflzV6cOCxB7pvPrjoG/o+aSPrt+Cm9YRBWGW1jtomuy6B6PNqK+uPOdQapq6gelnr7GMHSuz9EYF/MKyoaXyBKsukYe0BV18B8=
 after_success:
-- "openssl aes-256-cbc -k $DEPLOY_KEY1 -in config/id_deploy_enc_travis -d -a -out config/id_deploy"
+- "openssl enc -d aes-256-cbc -k $DEPLOY_KEY1 -in config/id_deploy_enc_travis -out config/id_deploy"
 
 - |
   if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
