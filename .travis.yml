@@ -15,3 +15,9 @@ after_success:
   if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
     bundle exec cap staging deploy
   fi
+notifications:
+  slack:
+    matrix:
+    - "<account>:<token>"
+    rooms:
+      secure: n3jEGRHQRdBjur6QAT5KOn77GcEeX73vyjXS6q62n90cZrr9sv/fYTAmrbYRC7iYE3NXap6ZBp8MSGa+hm2xqLXZjSutlkqe0GA+icA7jGXcSstc9t/eQmpzMe+mFi3p41Th8RojkLM9VsWCcQtlJIdq0m8dBoQgIM1Yk7tRDGkYrW9KAgb68sUFlLF9PhhjECeHal5bYFngR+IZOuKUBF1qHhLJ6lBOEhjkTZXc5tLnrIzGuzjPT6l1qAr54CgpSUuJsuQba2bjAjN1srepzjfr2m6tFGh2Ce419H6eTzFFSiNpfnYp5zJY4Fiw/gpaaj+aRW1c5fmLiz5NZHwVIOJPEjoNN+vKz5mKbUQY60igI4XQC6bxRfAa0s9u3nBH4AXeVaD4j0VIn1d3b44ypTXjXAzNzwHDBP4WaV1UWavdGCTbovgGidjs3wTfT1vKm777f51gx54KbwMy9VVfOXExVXMKes+2ApkFBHdKuLAoc9WvV3t4J5zlAijraYZ6XoRul2AyjEe0deUn7BMzdDPH1dKTo5aOhkRF1KtbGht3kGjAvNhjrPCESSsTQKSl8Qj/g7aebZ0TGcjVbTCWEsB2oWz3yTOCX/IJHJzNmT48Z9hnEzlZo/vsOqL+QLY364ECKhQI+WHUHL0dKph9WjwrUrhptsqNA6SJbKSquBg=
