@@ -1,10 +1,3 @@
-require 'yaml'
-require 'json'
-masterkey = YAML.load(File.open('/tmp/master.key'))
-
-set :RAILS_MASTER_KEY, masterkey
-
-
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.2"
 
