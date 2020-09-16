@@ -9,7 +9,8 @@ set :repo_url, 'https://github.com/unepwcmc/ci-test.git'
 
 set :deploy_user, 'wcmc'
 
-set :default_env, rails_master_key: ENV['RAILS_MASTER_KEY']
+
+set :RAILS_MASTER_KEY, ENV['RAILS_MASTER_KEY']
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/#{fetch(:deploy_user)}/#{fetch(:application)}"
