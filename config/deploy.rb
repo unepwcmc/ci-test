@@ -11,7 +11,7 @@ set :deploy_user, 'wcmc'
 
 namespace :deploy do
 task :copy_rails_env do
-run “cp /tmp/master.key current/config/master.key”
+run "cp /tmp/master.key current/config/master.key"
 end
 
 
