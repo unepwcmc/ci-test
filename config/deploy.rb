@@ -21,6 +21,9 @@ set :rvm_type, :user
 set :rvm_ruby_version, '2.5.0'
 
 
+set :default_env, { RAILS_MASTER_KEY: "/tmp/master.key"}
+
+
 
 set :ssh_options, {
   forward_agent: true,
