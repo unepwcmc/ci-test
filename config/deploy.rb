@@ -9,15 +9,6 @@ set :repo_url, 'https://github.com/unepwcmc/ci-test.git'
 
 set :deploy_user, 'wcmc'
 
-namespace :deploy do
-task :copy_rails_env do
-run "cp /tmp/master.key current/config/master.key"
-end
-
-
-after "deploy:updating", "deploy:copy_rails_env"
-
-
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/#{fetch(:deploy_user)}/#{fetch(:application)}"
 
