@@ -3,14 +3,14 @@ language: ruby
 rvm:
 - 2.5.0
 before_install:
+#- openssl aes-256-cbc -K $encrypted_aa70c20c7e51_key -iv $encrypted_aa70c20c7e51_iv
+#  -in master.key.enc -out /tmp/master.key -d
 - openssl aes-256-cbc -K $encrypted_86d18cc638e6_key -iv $encrypted_86d18cc638e6_iv
   -in deploy_key.enc -out /tmp/deploy_key -d
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_key
 - ssh-add /tmp/deploy_key
 after_success:
-- openssl aes-256-cbc -K $encrypted_8ad82cc635a3_key -iv $encrypted_8ad82cc635a3_iv
-  -in master.key.enc -out config/master.key -d
 - |
   if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
     bundle exec cap staging deploy
@@ -21,3 +21,6 @@ notifications:
     - "<account>:<token>"
     rooms:
       secure: n3jEGRHQRdBjur6QAT5KOn77GcEeX73vyjXS6q62n90cZrr9sv/fYTAmrbYRC7iYE3NXap6ZBp8MSGa+hm2xqLXZjSutlkqe0GA+icA7jGXcSstc9t/eQmpzMe+mFi3p41Th8RojkLM9VsWCcQtlJIdq0m8dBoQgIM1Yk7tRDGkYrW9KAgb68sUFlLF9PhhjECeHal5bYFngR+IZOuKUBF1qHhLJ6lBOEhjkTZXc5tLnrIzGuzjPT6l1qAr54CgpSUuJsuQba2bjAjN1srepzjfr2m6tFGh2Ce419H6eTzFFSiNpfnYp5zJY4Fiw/gpaaj+aRW1c5fmLiz5NZHwVIOJPEjoNN+vKz5mKbUQY60igI4XQC6bxRfAa0s9u3nBH4AXeVaD4j0VIn1d3b44ypTXjXAzNzwHDBP4WaV1UWavdGCTbovgGidjs3wTfT1vKm777f51gx54KbwMy9VVfOXExVXMKes+2ApkFBHdKuLAoc9WvV3t4J5zlAijraYZ6XoRul2AyjEe0deUn7BMzdDPH1dKTo5aOhkRF1KtbGht3kGjAvNhjrPCESSsTQKSl8Qj/g7aebZ0TGcjVbTCWEsB2oWz3yTOCX/IJHJzNmT48Z9hnEzlZo/vsOqL+QLY364ECKhQI+WHUHL0dKph9WjwrUrhptsqNA6SJbKSquBg=
+env:
+  global:
+    secure: PPUdU60vS7Afl5eXhHZ/ETXAB+Rh01bndYGqWF5CCpMM6C0PNV/oLFY850mlZOEsqEoqS3H3iy5DfMP+FVS+WQ1ZclqjzVPpRbqjf+lHZrMDv9jxz0B1qMGNF5LFUEXI7VFyCTGVNrdIG/ZO1TtvlhLJh5OCUQHkQ0tzYeY45OgugPbzOW8vLsy7ZxWQ3XLopVixzrVKdr7AFxOFNzL2ChX1iZPIdmZHRTveaZZrzR+YZ7sjhdd9mFwWgaWGg5trScx2oZ7NrJKkB1k1qZ9fQyd1jkVU8hIy6lhdP63fdT5vKqqiNCJgBwmqH1VT3mDPxd3Q+/n6kndgc3MGqrWm5WblB9ZMu5Ryuof1qrPwwtLNcpsgkYs2zDSjsXKBeHsjCFJ9FBAD80HLx/vwrsAFGIjtZ5ID4MTnBpTd8n7EiVqLDLfGiDeEorBfwv4B9YoZ/fk5oaJVmrRXPVf5ho5FlQld7k6yLjiyPwkcmapDENE5/Eb30wEpSbqxDYcIN+P45uAe9YhyrMopJXXDWz8nX8B9h3ny3pGsopke7J3mW/7UVreZ/9JjOF7PblVHZCuYlFAPx0LBS+JqOahpQ/eaJ2j3SXMBfDZM6fX2vAHk9CV7nZhuGZkbMDy9vfJaHPGOg1wCK7uZ7DVBqL3zUNeXRhPjclQIXpjm5o0TmM8enLg=
