@@ -3,14 +3,14 @@ language: ruby
 rvm:
 - 2.5.0
 before_install:
-- openssl aes-256-cbc -K $encrypted_aa70c20c7e51_key -iv $encrypted_aa70c20c7e51_iv
-  -in master.key.enc -out /tmp/master.key -d
 - openssl aes-256-cbc -K $encrypted_86d18cc638e6_key -iv $encrypted_86d18cc638e6_iv
   -in deploy_key.enc -out /tmp/deploy_key -d
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_key
 - ssh-add /tmp/deploy_key
 after_success:
+- openssl aes-256-cbc -K $encrypted_8ad82cc635a3_key -iv $encrypted_8ad82cc635a3_iv
+  -in master.key.enc -out config/master.key -d
 - |
   if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
     bundle exec cap staging deploy
