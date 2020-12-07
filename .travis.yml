@@ -10,7 +10,7 @@ before_install:
 - chmod 600 /tmp/deploy_key
 - ssh-add /tmp/deploy_key
 - bundle install --path vendor/bundle
-- snyk test
+- snyk test --all-projects
 after_success:
 - snyk monitor
 - |
