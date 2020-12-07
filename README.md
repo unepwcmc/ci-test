@@ -1,5 +1,7 @@
 # README
 
+[![Known Vulnerabilities](https://snyk.io/test/github/unepwcmc/ci-test/badge.svg)](https://snyk.io/test/github/unepwcmc/ci-test)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
