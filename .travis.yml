@@ -8,7 +8,10 @@ before_install:
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_key
 - ssh-add /tmp/deploy_key
+    - bundle install --path vendor/bundle
+    - snyk test
 after_success:
+- snyk monitor
 - |
   if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
     bundle exec cap staging deploy
