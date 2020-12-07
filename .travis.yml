@@ -12,7 +12,7 @@ before_install:
 - bundle install --path vendor/bundle
 - snyk test --all-projects
 after_success:
-- snyk monitor
+- snyk monitor --all-projects
 - |
   if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
     bundle exec cap staging deploy
