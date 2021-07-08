@@ -18,7 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'pg'
 # Use CoffeeScript for .coffee assets and views
 gem 'cocaine', '0.4.0' 
-gem 'travis'
+gem 'travis', '>= 1.9.1'
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
@@ -60,7 +60,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara', '>= 3.33.0'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
